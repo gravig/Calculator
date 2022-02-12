@@ -22,11 +22,13 @@ class Syntax extends Component {
 const types = {
   operator: ["STAR", "DIVIDE", "PLUS", "MINUS"],
   number: ["NUMBER"],
+  paren: ["LEFT_PAREN", "RIGHT_PAREN"],
 } as const;
 
 const colors: { [key: string]: string } = {
   operator: "#CC7832",
   number: "#8876AA",
+  paren: "#F1C66D",
 };
 
 export default class Screen extends Component {
@@ -49,6 +51,8 @@ export default class Screen extends Component {
 
   _children = () => {
     const { tokens } = this;
+
+    console.log({ tokens });
 
     this.children = tokens.map((token) => {
       const type = Object.keys(types).find((type: keyof typeof types) => {

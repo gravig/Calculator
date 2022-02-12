@@ -23,4 +23,12 @@ export default class Component {
       this.node.style[key] = value;
     });
   };
+
+  styles = (styles: string): void => {
+    const style = document.createElement("style");
+
+    style.appendChild(document.createTextNode(styles));
+
+    document.getElementsByTagName("head")[0].appendChild(style);
+  };
 }

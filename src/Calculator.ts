@@ -7,6 +7,7 @@ import IsLastZero from "./rules/IsLastZero";
 import IsMinusFirst from "./rules/IsMinusFirst";
 import IsPreviousNumber from "./rules/IsPreviousNumber";
 import IsLastOperator from "./rules/IsLastOperator";
+import IsLastGrouping from "./rules/IsLastGrouping";
 import Observable from "./Observable";
 
 export default class Calculator {
@@ -72,6 +73,8 @@ export default class Calculator {
   addOperator = (operator: string) => () => {
     const tokens = this.tokens.get();
     const isPreviousNumber = IsPreviousNumber(tokens);
+    const isLastOperator = IsLastOperator(tokens);
+    const isLastGrouping = IsLastGrouping(tokens);
     const isFirst = IsFirst(tokens);
     const isMinusFirst = IsMinusFirst(tokens);
 
@@ -79,9 +82,9 @@ export default class Calculator {
       return () => {};
     }
 
-    if (isPreviousNumber) {
+    if (isPreviousNumber || isLastGrouping) {
       this.add(operator)();
-    } else {
+    } else if (isLastOperator) {
       this.replace(operator)();
     }
   };
@@ -94,5 +97,9 @@ export default class Calculator {
     } else if (IsLastOperator(tokens)) {
       this.add("0.")();
     }
+  };
+
+  addGrouping = (paren: "(" | ")") => () => {
+    this.add(paren)();
   };
 }

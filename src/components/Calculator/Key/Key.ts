@@ -9,14 +9,7 @@ export default class Key extends Component {
 
     this.node.addEventListener("click", onClick);
 
-    this.style({
-      backgroundColor: "#354357",
-      border: "none",
-      color: "#fff",
-      height: "26px",
-      margin: "2px",
-      minWidth: "20%",
-      flex: `${flex}`,
-    });
+    this.node.classList.add("key");
+    this.node.style.flex = `${flex}`;
   }
 }

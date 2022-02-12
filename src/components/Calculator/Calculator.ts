@@ -4,6 +4,7 @@ import Key from "./Key/Key";
 import Div from "../Div/Div";
 import Screen from "../Screen/Screen";
 import Flex from "../Flex/Flex";
+import styles from "./styles";
 
 export default class Calculator extends Component {
   calculator: CalculatorCore;
@@ -24,17 +25,31 @@ export default class Calculator extends Component {
       backgroundColor: "#1D293A",
       padding: "20px",
     });
+
+    this.styles(styles);
   }
 
   private _children = () => {
     const tokens = this.calculator.tokens.get();
-    const { addOperator, addNumber, addDot, evaluate, clear, clearLastToken } =
-      this.calculator;
+    const {
+      addOperator,
+      addNumber,
+      addDot,
+      addGrouping,
+      evaluate,
+      clear,
+      clearLastToken,
+    } = this.calculator;
 
     this.children = [
       new Screen(tokens),
       new Div([
-        new Flex([new Key("AC", clear, 4), new Key("/", addOperator("/"))]),
+        new Flex([
+          new Key("AC", clear),
+          new Key("(", addGrouping("(")),
+          new Key(")", addGrouping(")")),
+          new Key("/", addOperator("/")),
+        ]),
         new Flex([
           new Key(`7`, addNumber(`7`)),
           new Key(`8`, addNumber(`8`)),
