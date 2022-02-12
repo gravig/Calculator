@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true,
+    "baseUrl": "src",
+    "paths": {
+      "smei": ["../node_modules/smei/src/index"],
+      "smei/*": ["../node_modules/smei/src/*"]
+    }
+  },
+  "files": ["src/index.ts"]
+}
