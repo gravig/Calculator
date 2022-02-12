@@ -6,6 +6,7 @@
     "target": "es5",
     "allowJs": true,
     "baseUrl": "src",
+    "isolatedModules": true,
     "paths": {
       "smei": ["../node_modules/smei/src/index"],
       "smei/*": ["../node_modules/smei/src/*"]

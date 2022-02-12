@@ -11,7 +11,6 @@ class Syntax extends Component {
     this.style({
       color,
       fontFamily: "Courier New, monospace",
-      height: "20px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -40,6 +39,11 @@ export default class Screen extends Component {
     this._children();
     this.style({
       display: "flex",
+      justifyContent: "flex-end",
+      fontSize: "16px",
+      marginBottom: "4px",
+      alignItems: "center",
+      height: "38px",
     });
   }
 

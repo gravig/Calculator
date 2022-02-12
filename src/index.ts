@@ -1,4 +1,4 @@
-import Calculator from "./Calculator";
+import Calculator from "./components/Calculator/Calculator";
 
 window.onload = () => {
   const container = document.querySelector("#root") as HTMLDivElement;
