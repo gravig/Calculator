@@ -1,7 +1,6 @@
 import Component from "../../Component";
 import Token from "smei/Token";
 import Text from "../Text/Text";
-import Observable from "Observable";
 
 class Syntax extends Component {
   constructor(text: string, color: string) {
@@ -39,20 +38,11 @@ export default class Screen extends Component {
 
     this.tokens = tokens;
     this._children();
-    this.style({
-      display: "flex",
-      justifyContent: "flex-end",
-      fontSize: "16px",
-      marginBottom: "4px",
-      alignItems: "center",
-      height: "38px",
-    });
+    this.node.classList.add("screen");
   }
 
   _children = () => {
     const { tokens } = this;
-
-    console.log({ tokens });
 
     this.children = tokens.map((token) => {
       const type = Object.keys(types).find((type: keyof typeof types) => {
